@@ -112,13 +112,8 @@ public static class EndpointFilterExtensions
     {
         builder.Add(endpointBuilder =>
         {
-            if (endpointBuilder is not RouteEndpointBuilder routeEndpointBuilder)
-            {
-                return;
-            }
-
-            routeEndpointBuilder.EndpointFilterFactories ??= new();
-            routeEndpointBuilder.EndpointFilterFactories.Add(filterFactory);
+            endpointBuilder.FilterFactories ??= new();
+            endpointBuilder.FilterFactories.Add(filterFactory);
         });
 
         return builder;

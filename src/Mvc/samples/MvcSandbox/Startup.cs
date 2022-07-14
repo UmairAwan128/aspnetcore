@@ -24,7 +24,13 @@ public class Startup
         {
             endpoints.MapGet("/MapGet", () => "MapGet");
 
-            endpoints.MapControllers();
+            endpoints.MapControllers().AddEndpointFilter((context, next) =>
+            {
+                var mi = context.MethodInfo;
+
+                return ic => next(ic);
+            });
+
             endpoints.MapControllerRoute(
                 Guid.NewGuid().ToString(),
                 "{controller=Home}/{action=Index}/{id?}");
@@ -36,6 +42,14 @@ public class Startup
         {
             ConfigureEndpoints(builder);
             var group = builder.MapGroup("/group");
+
+            group.AddEndpointFilter((context, next) =>
+            {
+                var mi = context.MethodInfo;
+
+                return ic => next(ic);
+            });
+
             ConfigureEndpoints(group);
         });
     }
