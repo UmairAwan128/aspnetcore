@@ -4,9 +4,9 @@
 #nullable enable
 
 using System.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Core;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Internal;
+using Resources = Microsoft.AspNetCore.Mvc.Core.Resources;
 
 namespace Microsoft.AspNetCore.Mvc.Infrastructure;
 
@@ -52,16 +52,16 @@ internal abstract class ActionMethodExecutor
         throw new Exception();
     }
 
-    public static ActionMethodExecutor GetFilterExecutor(EndpointFilterDelegate routeHandlerFilterDelegate) =>
-        new FilterActionMethodExecutor(routeHandlerFilterDelegate);
+    public static ActionMethodExecutor GetFilterExecutor(ControllerActionDescriptor actionDescriptor) =>
+        new FilterActionMethodExecutor(actionDescriptor);
 
     private sealed class FilterActionMethodExecutor : ActionMethodExecutor
     {
-        private readonly EndpointFilterDelegate _filterDelegate;
+        private readonly ControllerActionDescriptor _controllerActionDescriptor;
 
-        public FilterActionMethodExecutor(EndpointFilterDelegate filterDelegate)
+        public FilterActionMethodExecutor(ControllerActionDescriptor controllerActionDescriptor)
         {
-            _filterDelegate = filterDelegate;
+            _controllerActionDescriptor = controllerActionDescriptor;
         }
 
         public override async ValueTask<IActionResult> Execute(
@@ -71,8 +71,8 @@ internal abstract class ActionMethodExecutor
             object controller,
             object?[]? arguments)
         {
-            var context = new ControllerEndpointFilterInvocationContext(actionContext, executor, mapper, controller, arguments);
-            var result = await _filterDelegate(context);
+            var context = new ControllerEndpointFilterInvocationContext(_controllerActionDescriptor, actionContext, executor, mapper, controller, arguments);
+            var result = await _controllerActionDescriptor.FilterDelegate!(context);
             return ConvertToActionResult(mapper, result, executor.IsMethodAsync ? executor.AsyncResultType! : executor.MethodReturnType);
         }
 

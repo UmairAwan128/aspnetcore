@@ -432,7 +432,8 @@ internal sealed class ActionEndpointFactory
             EndpointFilterDelegate del = invocationContext =>
             {
                 // By the time this is called, we have the cache entry
-                return cad.CacheEntry!.InnerActionMethodExecutor.Execute((ControllerEndpointFilterInvocationContext)invocationContext);
+                var controllerInvocationContext = (ControllerEndpointFilterInvocationContext)invocationContext;
+                return controllerInvocationContext.ActionDescriptor.CacheEntry!.InnerActionMethodExecutor.Execute(controllerInvocationContext);
             };
 
             var context = new EndpointFilterFactoryContext(cad.MethodInfo, builder.Metadata, _serviceProvider);

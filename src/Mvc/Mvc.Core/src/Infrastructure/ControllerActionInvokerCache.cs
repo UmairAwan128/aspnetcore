@@ -70,7 +70,7 @@ internal sealed class ControllerActionInvokerCache
 
             var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
             var filterExecutor = actionDescriptor.FilterDelegate is not null
-                ? ActionMethodExecutor.GetFilterExecutor(actionDescriptor.FilterDelegate)
+                ? ActionMethodExecutor.GetFilterExecutor(actionDescriptor)
                 : null;
 
             cacheEntry = new ControllerActionInvokerCacheEntry(

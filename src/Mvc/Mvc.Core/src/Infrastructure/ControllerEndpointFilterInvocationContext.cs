@@ -4,6 +4,7 @@
 #nullable enable
 
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Internal;
 
 namespace Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -12,12 +13,14 @@ namespace Microsoft.AspNetCore.Mvc.Infrastructure;
 internal class ControllerEndpointFilterInvocationContext : EndpointFilterInvocationContext
 {
     public ControllerEndpointFilterInvocationContext(
+        ControllerActionDescriptor actionDescriptor,
         ActionContext actionContext,
         ObjectMethodExecutor executor,
         IActionResultTypeMapper mapper,
         object controller,
         object?[]? arguments)
     {
+        ActionDescriptor = actionDescriptor;
         ActionContext = actionContext;
         Mapper = mapper;
         Executor = executor;
@@ -32,6 +35,8 @@ internal class ControllerEndpointFilterInvocationContext : EndpointFilterInvocat
     internal ActionContext ActionContext { get; }
 
     internal ObjectMethodExecutor Executor { get; }
+
+    internal ControllerActionDescriptor ActionDescriptor { get; }
 
     public override HttpContext HttpContext => ActionContext.HttpContext;
 

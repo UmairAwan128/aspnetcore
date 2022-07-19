@@ -19,7 +19,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.VoidAction));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+            new ActionContext(),
             objectMethodExecutor,
             mapper,
             controller,
@@ -44,7 +45,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnIActionResult));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -69,7 +71,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsIActionResultSubType));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -93,7 +96,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsActionResultOfT));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -121,7 +125,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsModelAsModel));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -149,7 +154,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnModelAsObject));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+            new ActionContext(),
             objectMethodExecutor,
             mapper,
             controller,
@@ -177,7 +183,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsIActionResultSubType));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -201,7 +208,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsTask));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -226,7 +234,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsAwaitable));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -251,7 +260,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnIActionResultAsync));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -275,7 +285,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnActionResultAsync));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+                    new ActionContext(),
                     objectMethodExecutor,
                     mapper,
                     controller,
@@ -300,7 +311,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsModelAsModelAsync));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+            new ActionContext(),
             objectMethodExecutor,
             mapper,
             controller,
@@ -328,7 +340,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsModelAsObjectAsync));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+            new ActionContext(),
             objectMethodExecutor,
             mapper,
             controller,
@@ -356,7 +369,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnIActionResultAsObjectAsync));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+            new ActionContext(),
             objectMethodExecutor,
             mapper,
             controller,
@@ -380,7 +394,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnActionResultOFTAsync));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+            new ActionContext(),
             objectMethodExecutor,
             mapper,
             controller,
@@ -408,7 +423,8 @@ public class ActionMethodExecutorTest
         var controller = new TestController();
         var objectMethodExecutor = GetExecutor(nameof(TestController.ReturnsCustomConvertibleFromIActionResult));
         var actionMethodExecutor = ActionMethodExecutor.GetExecutor(objectMethodExecutor);
-        var filterContext = new ControllerEndpointFilterInvocationContext(new ActionContext(),
+        var filterContext = new ControllerEndpointFilterInvocationContext(new Controllers.ControllerActionDescriptor(),
+            new ActionContext(),
             objectMethodExecutor,
             mapper,
             controller,
