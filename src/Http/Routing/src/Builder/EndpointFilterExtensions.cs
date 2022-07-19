@@ -112,7 +112,6 @@ public static class EndpointFilterExtensions
     {
         builder.Add(endpointBuilder =>
         {
-            endpointBuilder.FilterFactories ??= new();
             endpointBuilder.FilterFactories.Add(filterFactory);
         });
 

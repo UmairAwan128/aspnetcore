@@ -186,7 +186,7 @@ internal sealed class RouteEndpointDataSource : EndpointDataSource
         factoryCreatedRequestDelegate = RequestDelegateFactory.Create(entry.RouteHandler, factoryOptions).RequestDelegate;
 
         // Clear out any filters so they don't get rerun in Build(). We can rethink how we do this later when exposed as public API.
-        builder.FilterFactories = null;
+        builder.FilterFactories.Clear();
 
         if (ReferenceEquals(builder.RequestDelegate, redirectedRequestDelegate))
         {

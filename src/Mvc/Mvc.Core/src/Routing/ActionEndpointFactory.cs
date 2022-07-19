@@ -259,7 +259,7 @@ internal sealed class ActionEndpointFactory
             route.Conventions[i](builder);
         }
 
-        builder.FilterFactories = null;
+        builder.FilterFactories.Clear();
 
         endpoints.Add((RouteEndpoint)builder.Build());
     }
@@ -427,7 +427,7 @@ internal sealed class ActionEndpointFactory
             var routeHandlerFilters = reb.FilterFactories;
 
             // Make them null to avoid the default behavior
-            reb.FilterFactories = null;
+            reb.FilterFactories.Clear();
 
             EndpointFilterDelegate del = invocationContext =>
             {
