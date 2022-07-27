@@ -9,7 +9,6 @@ using Microsoft.Extensions.Internal;
 
 namespace Microsoft.AspNetCore.Mvc.Infrastructure;
 
-// REVIEW: Should this be public API?
 internal class ControllerEndpointFilterInvocationContext : EndpointFilterInvocationContext
 {
     public ControllerEndpointFilterInvocationContext(

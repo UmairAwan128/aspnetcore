@@ -63,7 +63,7 @@ public sealed class RouteEndpointBuilder : EndpointBuilder
             // do not matter.
             RequestDelegateFactoryOptions rdfOptions = new()
             {
-                EndpointFilterFactories = FilterFactories,
+                EndpointFilterFactories = FilterFactories.AsReadOnly(),
                 EndpointMetadata = Metadata,
             };
 

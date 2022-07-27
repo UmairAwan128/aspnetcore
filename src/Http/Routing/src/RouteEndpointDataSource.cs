@@ -179,7 +179,7 @@ internal sealed class RouteEndpointDataSource : EndpointDataSource
             ThrowOnBadRequest = _throwOnBadRequest,
             DisableInferBodyFromParameters = ShouldDisableInferredBodyParameters(entry.HttpMethods),
             EndpointMetadata = builder.Metadata,
-            EndpointFilterFactories = builder.FilterFactories,
+            EndpointFilterFactories = builder.FilterFactories.AsReadOnly(),
         };
 
         // We ignore the returned EndpointMetadata has been already populated since we passed in non-null EndpointMetadata.

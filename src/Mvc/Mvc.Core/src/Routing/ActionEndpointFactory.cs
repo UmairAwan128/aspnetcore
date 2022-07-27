@@ -426,10 +426,7 @@ internal sealed class ActionEndpointFactory
         {
             var routeHandlerFilters = reb.FilterFactories;
 
-            // Make them null to avoid the default behavior
-            reb.FilterFactories.Clear();
-
-            EndpointFilterDelegate del = invocationContext =>
+            EndpointFilterDelegate del = static invocationContext =>
             {
                 // By the time this is called, we have the cache entry
                 var controllerInvocationContext = (ControllerEndpointFilterInvocationContext)invocationContext;

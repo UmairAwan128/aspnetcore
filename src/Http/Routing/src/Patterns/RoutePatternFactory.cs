@@ -1087,9 +1087,9 @@ public static class RoutePatternFactory
     /// <summary>
     /// Creates a <see cref="RoutePattern"/> that combines the specified patterns.
     /// </summary>
-    /// <param name="left"></param>
-    /// <param name="right"></param>
-    /// <returns></returns>
+    /// <param name="left">A string representing the first part of the route.</param>
+    /// <param name="right">A stirng representing the second part of the route.</param>
+    /// <returns>The combined <see cref="RoutePattern"/>.</returns>
     /// <exception cref="InvalidOperationException"></exception>
     /// <exception cref="RoutePatternException"></exception>
     public static RoutePattern Combine(RoutePattern? left, RoutePattern right)

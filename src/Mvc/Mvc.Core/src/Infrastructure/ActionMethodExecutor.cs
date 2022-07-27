@@ -27,6 +27,8 @@ internal abstract class ActionMethodExecutor
             new AwaitableObjectResultExecutor(),
     };
 
+    public static EmptyResult EmptyResultInstance { get; } = new();
+
     public abstract ValueTask<IActionResult> Execute(
         ActionContext actionContext,
         IActionResultTypeMapper mapper,
@@ -100,7 +102,7 @@ internal abstract class ActionMethodExecutor
             object?[]? arguments)
         {
             executor.Execute(controller, arguments);
-            return new(new EmptyResult());
+            return new(EmptyResultInstance);
         }
 
         public override ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
@@ -110,7 +112,7 @@ internal abstract class ActionMethodExecutor
             var arguments = (object[])invocationContext.Arguments;
 
             executor.Execute(controller, arguments);
-            return new(new EmptyResult());
+            return new(EmptyResultInstance);
         }
 
         protected override bool CanExecute(ObjectMethodExecutor executor)
@@ -195,7 +197,7 @@ internal abstract class ActionMethodExecutor
             object?[]? arguments)
         {
             await (Task)executor.Execute(controller, arguments)!;
-            return new EmptyResult();
+            return EmptyResultInstance;
         }
 
         public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
@@ -205,7 +207,7 @@ internal abstract class ActionMethodExecutor
             var arguments = (object[])invocationContext.Arguments;
 
             await (Task)executor.Execute(controller, arguments)!;
-            return new EmptyResult();
+            return EmptyResultInstance;
         }
 
         protected override bool CanExecute(ObjectMethodExecutor executor) => executor.MethodReturnType == typeof(Task);
@@ -223,7 +225,7 @@ internal abstract class ActionMethodExecutor
             object?[]? arguments)
         {
             await executor.ExecuteAsync(controller, arguments);
-            return new EmptyResult();
+            return EmptyResultInstance;
         }
 
         public override async ValueTask<object?> Execute(ControllerEndpointFilterInvocationContext invocationContext)
@@ -233,7 +235,7 @@ internal abstract class ActionMethodExecutor
             var arguments = (object[])invocationContext.Arguments;
 
             await executor.ExecuteAsync(controller, arguments);
-            return new EmptyResult();
+            return EmptyResultInstance;
         }
 
         protected override bool CanExecute(ObjectMethodExecutor executor)
